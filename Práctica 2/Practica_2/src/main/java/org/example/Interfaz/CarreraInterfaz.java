@@ -71,22 +71,25 @@ public class CarreraInterfaz extends JPanel {
         });
         add(btnRetrocederTodos);
 
-
-
         if (!estadoInicial.isEmpty()) {
             vehiculos = estadoInicial;
             btnIniciarCarrera.setEnabled(true);
         } else {
             // Si no hay estado inicial, crear nuevos vehículos
             VehiculoInterfaz vehiculo1 = new VehiculoInterfaz("Vehiculo1", Color.BLUE, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 0, 0.45, 12);
-            VehiculoInterfaz vehiculo2 = new VehiculoInterfaz("Vehiculo2", Color.RED, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 50, 0.1, 6);
-            VehiculoInterfaz vehiculo3 = new VehiculoInterfaz("Vehiculo3", Color.GREEN, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 100, 0.3, 10);
+            vehiculo1.setBounds(INICIO_X, 0, VEHICLE_WIDTH, VEHICLE_HEIGHT); // Establece la posición y el tamaño del vehículo
             vehiculos.put("Vehiculo1", vehiculo1);
+            add(vehiculo1); // Agrega el vehículo1 a la interfaz de la carrera
+
+            VehiculoInterfaz vehiculo2 = new VehiculoInterfaz("Vehiculo2", Color.RED, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 50, 0.1, 6);
+            vehiculo2.setBounds(INICIO_X, 50, VEHICLE_WIDTH, VEHICLE_HEIGHT); // Establece la posición y el tamaño del vehículo
             vehiculos.put("Vehiculo2", vehiculo2);
+            add(vehiculo2); // Agrega el vehículo2 a la interfaz de la carrera
+
+            VehiculoInterfaz vehiculo3 = new VehiculoInterfaz("Vehiculo3", Color.GREEN, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 100, 0.3, 10);
+            vehiculo3.setBounds(INICIO_X, 100, VEHICLE_WIDTH, VEHICLE_HEIGHT); // Establece la posición y el tamaño del vehículo
             vehiculos.put("Vehiculo3", vehiculo3);
-            add(vehiculo1);
-            add(vehiculo2);
-            add(vehiculo3);
+            add(vehiculo3); // Agrega el vehículo3 a la interfaz de la carrera
         }
 
         int buttonY = 300; // Posición inicial de los botones
@@ -129,9 +132,11 @@ public class CarreraInterfaz extends JPanel {
             });
             add(btnRecargar);
 
-            add(vehiculo);
-
             buttonY += 80; // Increase the Y position for the next vehicle
+        }
+
+        for (VehiculoInterfaz vehiculo : vehiculos.values()) {
+            add(vehiculo); // Agrega el vehículo a la interfaz de la carrera al final
         }
     }
 
@@ -163,7 +168,6 @@ public class CarreraInterfaz extends JPanel {
         return estado;
     }
 }
-
                                 
 
 

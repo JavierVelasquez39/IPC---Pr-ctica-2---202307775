@@ -23,17 +23,16 @@ public class VehiculoInterfaz extends JPanel implements Serializable {
     VehiculoInterfaz(String nombre, Color color, int width, int height, double x, double y, double velocidad, double galonesDisponibles) {
         this.nombre = nombre;
         this.color = color;
-        this.carWidth = carWidth;
-        this.carHeight = carHeight;
-        this.positionX = positionX;
-        this.positionY = positionY;
+        this.carWidth = width;
+        this.carHeight = height;
+        this.positionX = (int) x;
+        this.positionY = (int) y;
         this.combustible = capacidadCombustible;
         this.capacidadCombustible = capacidadCombustible;
         this.combustibleLabel = new JLabel("Combustible: " + combustible);
         add(combustibleLabel);
 
         initComponents();
-
     }
 
 
