@@ -78,20 +78,23 @@ public class CarreraInterfaz extends JPanel {
             btnIniciarCarrera.setEnabled(true);
         } else {
             // Si no hay estado inicial, crear nuevos vehículos
-            VehiculoInterfaz vehiculo1 = new VehiculoInterfaz("Vehiculo1", Color.RED, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 0, 0.1, 6);
-            VehiculoInterfaz vehiculo2 = new VehiculoInterfaz("Vehiculo2", Color.GREEN, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 50, 0.3, 10);
-            VehiculoInterfaz vehiculo3 = new VehiculoInterfaz("Vehiculo3", Color.BLUE, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 100, 0.45, 12);
+            VehiculoInterfaz vehiculo1 = new VehiculoInterfaz("Vehiculo1", Color.BLUE, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 0, 0.45, 12);
+            VehiculoInterfaz vehiculo2 = new VehiculoInterfaz("Vehiculo2", Color.RED, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 50, 0.1, 6);
+            VehiculoInterfaz vehiculo3 = new VehiculoInterfaz("Vehiculo3", Color.GREEN, VEHICLE_WIDTH, VEHICLE_HEIGHT, 0, 100, 0.3, 10);
             vehiculos.put("Vehiculo1", vehiculo1);
             vehiculos.put("Vehiculo2", vehiculo2);
             vehiculos.put("Vehiculo3", vehiculo3);
+            add(vehiculo1);
+            add(vehiculo2);
+            add(vehiculo3);
         }
 
-        int buttonY = 0; // Posición inicial de los botones
+        int buttonY = 300; // Posición inicial de los botones
         for (VehiculoInterfaz vehiculo : vehiculos.values()) {
             VehiculoInterfaz currentVehicle = vehiculo; // Create a final variable for the current vehicle
 
             JButton btnIniciarViaje = new JButton("Iniciar viaje");
-            btnIniciarViaje.setBounds(WINDOW_WIDTH + 20, buttonY + 10, 150, 30);
+            btnIniciarViaje.setBounds(WINDOW_WIDTH + 20, buttonY, 150, 30);
             btnIniciarViaje.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -116,20 +119,19 @@ public class CarreraInterfaz extends JPanel {
             });
             add(btnRetroceder);
 
-            buttonY += 40; // Increase the Y position for the next button
-            add(vehiculo);
-        }
-
-        for (VehiculoInterfaz vehiculo : vehiculos.values()) {
             JButton btnRecargar = new JButton("Recargar");
+            btnRecargar.setBounds(WINDOW_WIDTH + 320, buttonY, 150, 30); // Añade esta línea
             btnRecargar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     vehiculo.recargarCombustible();
                 }
             });
-            add(vehiculo);
             add(btnRecargar);
+
+            add(vehiculo);
+
+            buttonY += 80; // Increase the Y position for the next vehicle
         }
     }
 
@@ -161,6 +163,7 @@ public class CarreraInterfaz extends JPanel {
         return estado;
     }
 }
+
                                 
 
 
